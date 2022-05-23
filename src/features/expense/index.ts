@@ -65,6 +65,15 @@ export const expenses: object[] = [
     createdAt: printDate,
     updatedAt: printDate,
   },
+  {
+    id: 3,
+    cId: 4,
+    amount: 1,
+    name: "Monthly Shopping",
+    date: printDate,
+    createdAt: printDate,
+    updatedAt: printDate,
+  },
 ];
 
 export type ExpenseProps = {
@@ -109,15 +118,12 @@ const initialState: ExpensesState = {
   categories,
 };
 
-export const handleAsyncDataDiff = createAsyncThunk(
-  "expense/syncExpense",
-  async (updatedAt) => {
-    const response = await syncExpense(updatedAt);
-    // The value we return becomes the `fulfilled` action payload
-    // console.log(response);
-    return response.data;
-  }
-);
+export const handleAsyncDataDiff = createAsyncThunk("expense/syncExpense", async (updatedAt) => {
+  const response = await syncExpense(updatedAt);
+  // The value we return becomes the `fulfilled` action payload
+  // console.log(response);
+  return response.data;
+});
 
 export const DataModel: IExpense = createSlice({
   name: "expense",
@@ -150,15 +156,15 @@ export const DataModel: IExpense = createSlice({
     builder
       .addCase(handleAsyncDataDiff.pending, (state) => {
         console.log(state, action);
-        // state.status = "loading";
+        state.status = "loading";
       })
       .addCase(handleAsyncDataDiff.fulfilled, (state, action) => {
         console.log(state, action);
         state.status = "idle";
-        // state.diff = action.payload;
+        state.diff = action.payload;
       })
       .addCase(handleAsyncDataDiff.rejected, (state) => {
-        // state.status = "failed";
+        state.status = "failed";
       });
   },
 });
@@ -170,10 +176,9 @@ export const syncDataModel =
   (updatedAt: Date): AppThunk =>
   (dispatch, getState) => {
     const getExpenses = listExpenses(getState());
-    console.log(getExpenses);
     // if (updatedAt !== printDate) {
     // console.log("ehyyyyyy we can sync!", getExpenses);
     dispatch(sync(getExpenses));
   };
 
-export default DataModel.reducer;
+export default DataModel;

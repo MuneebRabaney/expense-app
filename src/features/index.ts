@@ -1,3 +1,7 @@
-import { default as Expense } from "./expense";
+import Expense from "./expense";
 
-export { Expense };
+const DataModel = {
+  expense: Expense.reducer,
+};
+
+export default DataModel;

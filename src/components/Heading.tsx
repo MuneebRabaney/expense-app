@@ -6,9 +6,7 @@ export type HeadingProps = {
 export function Heading(props: HeadingProps) {
   return (
     <header>
-      <h1 className="text-center font-bold text-2xl text-gray-700">
-        {props?.title}
-      </h1>
+      <h1 className='text-center font-bold mb-5 text-2xl text-gray-700'>{props?.title}</h1>
       {props?.children}
     </header>
   );

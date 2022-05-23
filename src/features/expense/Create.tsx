@@ -1,15 +1,12 @@
-import React, { useRef } from "react";
-import { default as Form } from "src/components";
+import { Form } from "@components";
 
-export function Create() {
+export default function Create() {
   const formRef = useRef();
   return (
-    <div className="grid gap-5 md:grid-cols-2">
-      <Form ref={formRef} name="create">
+    <div className='grid gap-5 md:grid-cols-2'>
+      <Form ref={formRef} name='create'>
         {props?.children}
       </Form>
     </div>
   );
 }
-
-export default Create;

@@ -1,9 +1,9 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { default as DataModel } from "src/feature";
+import { default as Expense } from "src/features";
 
 export const store = configureStore({
   reducer: {
-    expense: DataModel,
+    ...Expense,
   },
 });
 

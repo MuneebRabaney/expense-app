@@ -3,8 +3,8 @@ import { List } from "src/features/expense";
 
 function Expenses() {
   return (
-    <div className="container mx-auto px-2 max-w-5xl pt-10 md:pt-32">
-      <Heading title="Expenses Page" />
+    <div className='container mx-auto px-2 max-w-5xl pt-10 md:pt-32'>
+      <Heading title='Expenses Page' />
       <List />
     </div>
   );
